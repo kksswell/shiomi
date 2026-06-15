@@ -11,3 +11,4 @@ python-a2s==1.4.1
 django-storages==1.14.4
 boto3==1.35.87
 Pillow==11.0.0
+django-cors-headers
