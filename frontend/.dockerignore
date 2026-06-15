@@ -1,0 +1,16 @@
+# Do not send local Node/Vite artifacts into Docker context
+node_modules/
+dist/
+.vite/
+.cache/
+
+# Local/runtime files
+.env
+.env.*
+*.log
+
+# VCS/editor
+.git/
+.gitignore
+.vscode/
+.idea/

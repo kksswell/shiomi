@@ -1,0 +1,23 @@
+# Root-level docker context safety
+.git/
+.vscode/
+.idea/
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+backend/.venv/
+backend/venv/
+backend/__pycache__/
+backend/**/*.pyc
+.env
+.env.*
+*.log
+backups/postgres/*
+!backups/postgres/.gitkeep
+backups/media/*
+!backups/media/.gitkeep
+deploy/certbot/conf/*
+!deploy/certbot/conf/.gitkeep
+deploy/certbot/www/*
+!deploy/certbot/www/.gitkeep

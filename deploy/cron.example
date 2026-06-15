@@ -1,0 +1,3 @@
+# Открыть: crontab -e
+# Ежедневный бэкап PostgreSQL и media в 03:30 по системному времени VPS:
+30 3 * * * cd /srv/vania-sait && /srv/vania-sait/deploy/scripts/backup_all.sh >> /srv/vania-sait/backups/backup.log 2>&1
