@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: shiomi-backend
+    runtime: python
+    rootDir: backend
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: |
+      python manage.py migrate &&
+      gunicorn config.wsgi:application
+    envVars:
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: POSTGRES_HOST
+        fromDatabase:
+          name: shiomi-db
+          property: host
+      - key: POSTGRES_PORT
+        fromDatabase:
+          name: shiomi-db
+          property: port
+      - key: POSTGRES_DB
+        fromDatabase:
+          name: shiomi-db
+          property: database
+      - key: POSTGRES_USER
+        fromDatabase:
+          name: shiomi-db
+          property: user
+      - key: POSTGRES_PASSWORD
+        fromDatabase:
+          name: shiomi-db
+          property: password
+
+  - type: static
+    name: shiomi-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishPath: dist
+
+databases:
+  - name: shiomi-db
+    databaseName: shiomi
+    user: shiomi
